@@ -33,21 +33,14 @@ function MainAppTabs() {
         headerShown: false,
       })}
     >
-      {/* <Tab.Screen name="Disposables">
-        {props => <ProductListScreen {...props} category="disposables" />}
-      </Tab.Screen>
+      {/* Category tabs */}
+      <Tab.Screen name="Disposables" component={DisposablesScreen} />
       <Tab.Screen name="Vape Juice">
         {props => <ProductListScreen {...props} category="vape_juice" />}
       </Tab.Screen>
       <Tab.Screen name="Pods">
         {props => <ProductListScreen {...props} category="pods" />}
-      </Tab.Screen> */}
-
-      <Tab.Screen name="Disposables" component={DisposablesScreen} />
-      {/* <Tab.Screen name="Vape Juice" component={VapeJuiceScreen} />
-      <Tab.Screen name="Pods" component={PodsScreen} /> */}
-
-      
+      </Tab.Screen>
     </Tab.Navigator>
   );
 }
