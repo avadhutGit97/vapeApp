@@ -68,9 +68,9 @@ export default function App() {
           options={{ headerShown: false }}
         />
          <Stack.Screen
-          name="BrandProductsScreen"
+          name="BrandProducts"
           component={BrandProductsScreen}
-          options={{ title: 'BrandProducts', headerBackVisible: false }}
+          options={{ title: 'Brand Products', headerBackVisible: true }}
         />
         <Stack.Screen
           name="Checkout"

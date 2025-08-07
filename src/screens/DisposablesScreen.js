@@ -26,7 +26,7 @@ const DisposablesScreen = ({ navigation }) => {
   }, []);
 
   const handleBrandPress = (brandId) => {
-    navigation.navigate('BrandProductsScreen', { brandId });
+    navigation.navigate('BrandProducts', { brandId });
   };
 
   if (loading) {
