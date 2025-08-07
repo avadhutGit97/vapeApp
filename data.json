@@ -1,0 +1,32 @@
+{
+  "disposables": {
+    "Elf Bar 6000": {
+      "flavours": {
+        "Mango Ice": {
+          "name": "Mango Ice2",
+          "puff": "6000",
+          "image": "https://example.com/mango-ice.jpg"
+        },
+        "Watermelon Bubblegum": {
+          "name": "Watermelon Bubblegum",
+          "puff": "6000",
+          "image": "https://example.com/watermelon-bubblegum.jpg"
+        }
+      }
+    },
+    "Geek Bar 5000": {
+      "flavours": {
+        "Blueberry Ice": {
+          "name": "Blueberry Ice",
+          "puff": "5000",
+          "image": "https://example.com/blueberry-ice.jpg"
+        },
+        "Strawberry Kiwi": {
+          "name": "Strawberry Kiwi",
+          "puff": "5000",
+          "image": "https://example.com/strawberry-kiwi.jpg"
+        }
+      }
+    }
+  }
+}
