@@ -11,10 +11,32 @@ const BrandProductsScreen = ({ route }) => {
   const [loading, setLoading] = useState(true);
   const [source, setSource] = useState('');
 
+  const normalize = (str = '') => str.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+
   const loadFromLocalJson = () => {
     try {
-      const brandEntry = localData?.disposables?.[brandId];
+      const disposables = localData?.disposables || {};
+      const keys = Object.keys(disposables);
+      if (keys.length === 0) return false;
+
+      const idNorm = normalize(brandId);
+
+      // Try exact normalized match first
+      let matchedKey = keys.find(k => normalize(k) === idNorm);
+
+      // Then try prefix/contains match
+      if (!matchedKey) {
+        matchedKey = keys.find(k => {
+          const kn = normalize(k);
+          return kn.startsWith(idNorm) || idNorm.startsWith(kn) || kn.includes(idNorm) || idNorm.includes(kn);
+        });
+      }
+
+      if (!matchedKey) return false;
+
+      const brandEntry = disposables[matchedKey];
       if (!brandEntry || !brandEntry.flavours) return false;
+
       const flavourList = Object.entries(brandEntry.flavours).map(([id, data]) => ({ id, ...data }));
       setFlavours(flavourList);
       setSource('json');
