@@ -93,6 +93,72 @@
       "nicotineMg": 20,
       "category": "vape_juice",
       "price": 21.99
+    },
+
+    "z-pods-mango": {
+      "name": "Z Pods Mango",
+      "brand": "Z Pods",
+      "flavor": "Mango",
+      "category": "z_pods",
+      "price": 14.99
+    },
+    "z-pods-watermelon": {
+      "name": "Z Pods Watermelon",
+      "brand": "Z Pods",
+      "flavor": "Watermelon",
+      "category": "z_pods",
+      "price": 14.99
+    },
+    "z-pods-kiwi": {
+      "name": "Z Pods Kiwi",
+      "brand": "Z Pods",
+      "flavor": "Kiwi",
+      "category": "z_pods",
+      "price": 14.99
+    },
+
+    "hybrid-pods-mango": {
+      "name": "Hybrid Pods Mango",
+      "brand": "Hybrid Pods",
+      "flavor": "Mango",
+      "category": "hybrid_pods",
+      "price": 15.99
+    },
+    "hybrid-pods-watermelon": {
+      "name": "Hybrid Pods Watermelon",
+      "brand": "Hybrid Pods",
+      "flavor": "Watermelon",
+      "category": "hybrid_pods",
+      "price": 15.99
+    },
+    "hybrid-pods-kiwi": {
+      "name": "Hybrid Pods Kiwi",
+      "brand": "Hybrid Pods",
+      "flavor": "Kiwi",
+      "category": "hybrid_pods",
+      "price": 15.99
+    },
+
+    "stlth-mango": {
+      "name": "STLTH Mango",
+      "brand": "STLTH",
+      "flavor": "Mango",
+      "category": "stlth",
+      "price": 16.99
+    },
+    "stlth-watermelon": {
+      "name": "STLTH Watermelon",
+      "brand": "STLTH",
+      "flavor": "Watermelon",
+      "category": "stlth",
+      "price": 16.99
+    },
+    "stlth-kiwi": {
+      "name": "STLTH Kiwi",
+      "brand": "STLTH",
+      "flavor": "Kiwi",
+      "category": "stlth",
+      "price": 16.99
     }
   }
 }
