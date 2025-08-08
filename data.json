@@ -28,5 +28,71 @@
         }
       }
     }
+  },
+  "products": {
+    "lemon-drop-blueberry-12mg": {
+      "name": "Lemon Drop Blueberry 12 mg",
+      "brand": "Lemon Drop",
+      "flavor": "Blueberry",
+      "nicotineMg": 12,
+      "category": "vape_juice",
+      "price": 19.99
+    },
+    "lemon-drop-blueberry-20mg": {
+      "name": "Lemon Drop Blueberry 20 mg",
+      "brand": "Lemon Drop",
+      "flavor": "Blueberry",
+      "nicotineMg": 20,
+      "category": "vape_juice",
+      "price": 19.99
+    },
+    "lemon-drop-mango-12mg": {
+      "name": "Lemon Drop Mango 12 mg",
+      "brand": "Lemon Drop",
+      "flavor": "Mango",
+      "nicotineMg": 12,
+      "category": "vape_juice",
+      "price": 19.99
+    },
+    "lemon-drop-mango-20mg": {
+      "name": "Lemon Drop Mango 20 mg",
+      "brand": "Lemon Drop",
+      "flavor": "Mango",
+      "nicotineMg": 20,
+      "category": "vape_juice",
+      "price": 19.99
+    },
+    "beast-mode-blueberry-12mg": {
+      "name": "Beast Mode Blueberry 12 mg",
+      "brand": "Beast Mode",
+      "flavor": "Blueberry",
+      "nicotineMg": 12,
+      "category": "vape_juice",
+      "price": 21.99
+    },
+    "beast-mode-blueberry-20mg": {
+      "name": "Beast Mode Blueberry 20 mg",
+      "brand": "Beast Mode",
+      "flavor": "Blueberry",
+      "nicotineMg": 20,
+      "category": "vape_juice",
+      "price": 21.99
+    },
+    "beast-mode-mango-12mg": {
+      "name": "Beast Mode Mango 12 mg",
+      "brand": "Beast Mode",
+      "flavor": "Mango",
+      "nicotineMg": 12,
+      "category": "vape_juice",
+      "price": 21.99
+    },
+    "beast-mode-mango-20mg": {
+      "name": "Beast Mode Mango 20 mg",
+      "brand": "Beast Mode",
+      "flavor": "Mango",
+      "nicotineMg": 20,
+      "category": "vape_juice",
+      "price": 21.99
+    }
   }
 }
