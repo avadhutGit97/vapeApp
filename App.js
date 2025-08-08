@@ -65,9 +65,7 @@ function MainAppTabs({ navigation }) {
       <Tab.Screen name="Vape Juice">
         {props => <ProductListScreen {...props} category="vape_juice" />}
       </Tab.Screen>
-      <Tab.Screen name="Pods">
-        {props => <ProductListScreen {...props} category="pods" />}
-      </Tab.Screen>
+      <Tab.Screen name="Pods" component={PodsScreen} />
       <Tab.Screen name="Cart" component={() => null} listeners={{
         tabPress: e => {
           e.preventDefault();
