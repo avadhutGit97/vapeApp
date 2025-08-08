@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { auth, firebaseConfig } from '../../firebase'; // Make sure firebase.js is in the root folder
 import { FirebaseRecaptchaVerifierModal } from 'expo-firebase-recaptcha';
+import { useCart } from '../context/CartContext';
 
 // This is a placeholder for the web recaptcha verifier
 // It needs to be available in the component's scope.
@@ -23,6 +24,7 @@ const CheckoutScreen = ({ navigation }) => {
   const [confirmationResult, setConfirmationResult] = useState(null);
   const recaptchaWrapperRef = useRef(null);
   const nativeRecaptchaRef = useRef(null);
+  const { items, removeItem } = useCart();
 
   // Initialize RecaptchaVerifier for web
   useEffect(() => {
@@ -85,6 +87,8 @@ const CheckoutScreen = ({ navigation }) => {
     }
   };
 
+  const cartTotal = items.reduce((sum, it) => sum + (it.price || 0) * (it.quantity || 1), 0);
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* Native reCAPTCHA modal for Android/iOS */}
@@ -97,6 +101,28 @@ const CheckoutScreen = ({ navigation }) => {
 
       {/* This invisible div is required for web recaptcha */}
       <View ref={recaptchaWrapperRef} nativeID="recaptcha-container"></View>
+
+      {/* Cart Summary */}
+      <Text style={styles.sectionTitle}>Your Cart</Text>
+      {items.length === 0 ? (
+        <Text style={{ marginBottom: 8 }}>Cart is empty.</Text>
+      ) : (
+        <View style={styles.cartList}>
+          {items.map(item => (
+            <View key={item.id} style={styles.cartRow}>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.cartName}>{item.name}</Text>
+                <Text style={styles.cartMeta}>Qty: {item.quantity || 1} • ${item.price?.toFixed ? item.price.toFixed(2) : item.price}</Text>
+              </View>
+              <Button title="Remove" color="#d9534f" onPress={() => removeItem(item.id)} />
+            </View>
+          ))}
+          <View style={styles.cartTotalRow}>
+            <Text style={styles.cartTotalLabel}>Total</Text>
+            <Text style={styles.cartTotalValue}>${cartTotal.toFixed(2)}</Text>
+          </View>
+        </View>
+      )}
 
       <Text style={styles.label}>Delivery Zip Code</Text>
       <TextInput
@@ -147,6 +173,47 @@ const CheckoutScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 8,
+  },
+  cartList: {
+    backgroundColor: 'white',
+    borderWidth: 1,
+    borderColor: '#eee',
+    borderRadius: 6,
+    marginBottom: 12,
+  },
+  cartRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#f0f0f0',
+  },
+  cartName: {
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  cartMeta: {
+    color: '#666',
+    marginTop: 2,
+  },
+  cartTotalRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 12,
+  },
+  cartTotalLabel: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  cartTotalValue: {
+    fontSize: 16,
+    fontWeight: 'bold',
   },
   label: {
     fontSize: 16,
