@@ -24,8 +24,8 @@ const CheckoutScreen = ({ navigation }) => {
 
   // Initialize RecaptchaVerifier for web
   useEffect(() => {
-    if (Platform.OS === 'web' && recaptchaWrapperRef.current) {
-        appVerifier = new RecaptchaVerifier(auth, recaptchaWrapperRef.current, {
+    if (Platform.OS === 'web') {
+        appVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
             'size': 'invisible',
         });
     }
@@ -39,8 +39,10 @@ const CheckoutScreen = ({ navigation }) => {
 
     try {
       const formattedPhoneNumber = `+1${phoneNumber}`; // Assuming US/Canada numbers.
-      const confirmation = await signInWithPhoneNumber(auth, formattedPhoneNumber, appVerifier);
-      setConfirmationResult(confirmation);
+      const result = Platform.OS === 'web'
+        ? await signInWithPhoneNumber(auth, formattedPhoneNumber, appVerifier)
+        : await signInWithPhoneNumber(auth, formattedPhoneNumber);
+      setConfirmationResult(result);
       Alert.alert('Code Sent!', 'A verification code has been sent to your phone.');
     } catch (error) {
       console.error('SMS Error:', error);
@@ -76,7 +78,7 @@ const CheckoutScreen = ({ navigation }) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* This invisible div is required for web recaptcha */}
-      <View ref={recaptchaWrapperRef}></View>
+      <View ref={recaptchaWrapperRef} nativeID="recaptcha-container"></View>
 
       <Text style={styles.label}>Delivery Zip Code</Text>
       <TextInput
