@@ -7,7 +7,7 @@ import { Platform } from 'react-native';
 
 // TODO: Add your own Firebase configuration from your Firebase project console.
 // This is the most important part!
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyBCMCg10qay0LtF_BaHNOkWClATDR4TDX4",
   authDomain: "vapedeliveryapp.firebaseapp.com",
   projectId: "vapedeliveryapp",

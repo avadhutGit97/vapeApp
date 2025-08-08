@@ -9,7 +9,8 @@ import {
     Text, TextInput,
     View,
 } from 'react-native';
-import { auth } from '../../firebase'; // Make sure firebase.js is in the root folder
+import { auth, firebaseConfig } from '../../firebase'; // Make sure firebase.js is in the root folder
+import { FirebaseRecaptchaVerifierModal } from 'expo-firebase-recaptcha';
 
 // This is a placeholder for the web recaptcha verifier
 // It needs to be available in the component's scope.
@@ -21,6 +22,7 @@ const CheckoutScreen = ({ navigation }) => {
   const [code, setCode] = useState('');
   const [confirmationResult, setConfirmationResult] = useState(null);
   const recaptchaWrapperRef = useRef(null);
+  const nativeRecaptchaRef = useRef(null);
 
   // Initialize RecaptchaVerifier for web
   useEffect(() => {
@@ -39,10 +41,18 @@ const CheckoutScreen = ({ navigation }) => {
 
     try {
       const formattedPhoneNumber = `+1${phoneNumber}`; // Assuming US/Canada numbers.
-      const result = Platform.OS === 'web'
-        ? await signInWithPhoneNumber(auth, formattedPhoneNumber, appVerifier)
-        : await signInWithPhoneNumber(auth, formattedPhoneNumber);
-      setConfirmationResult(result);
+      if (Platform.OS === 'web') {
+        const result = await signInWithPhoneNumber(auth, formattedPhoneNumber, appVerifier);
+        setConfirmationResult(result);
+      } else {
+        // Ensure the modal is ready
+        if (!nativeRecaptchaRef.current) {
+          Alert.alert('Error', 'Recaptcha not ready. Please try again.');
+          return;
+        }
+        const result = await signInWithPhoneNumber(auth, formattedPhoneNumber, nativeRecaptchaRef.current);
+        setConfirmationResult(result);
+      }
       Alert.alert('Code Sent!', 'A verification code has been sent to your phone.');
     } catch (error) {
       console.error('SMS Error:', error);
@@ -77,6 +87,14 @@ const CheckoutScreen = ({ navigation }) => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      {/* Native reCAPTCHA modal for Android/iOS */}
+      {Platform.OS !== 'web' && (
+        <FirebaseRecaptchaVerifierModal
+          ref={nativeRecaptchaRef}
+          firebaseConfig={firebaseConfig}
+        />
+      )}
+
       {/* This invisible div is required for web recaptcha */}
       <View ref={recaptchaWrapperRef} nativeID="recaptcha-container"></View>
 
