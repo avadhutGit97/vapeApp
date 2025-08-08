@@ -4,12 +4,14 @@ import { View, Text, FlatList, Image, StyleSheet, ActivityIndicator, Button } fr
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase';
 import localData from '../../data.json';
+import { useCart } from '../context/CartContext';
 
 const BrandProductsScreen = ({ route, navigation }) => {
   const { brandId } = route.params;
   const [flavours, setFlavours] = useState([]);
   const [loading, setLoading] = useState(true);
   const [source, setSource] = useState('');
+  const { addItem } = useCart();
 
   const normalize = (str = '') => str.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 
@@ -69,6 +71,17 @@ const BrandProductsScreen = ({ route, navigation }) => {
     run();
   }, [brandId]);
 
+  const handleAddToCart = (flavour) => {
+    const product = {
+      id: `${brandId}:${flavour.id}`,
+      name: `${brandId} - ${flavour.name || flavour.id}`,
+      price: 0,
+      imageUrl: flavour.image || null,
+      category: 'disposables',
+    };
+    addItem(product, 1);
+  };
+
   if (loading) return (
     <View style={styles.center}>
       <ActivityIndicator size="large" />
@@ -90,6 +103,9 @@ const BrandProductsScreen = ({ route, navigation }) => {
             )}
             <Text style={styles.name}>{item.name || item.id}</Text>
             {item.puff ? <Text style={styles.puff}>Puffs: {item.puff}</Text> : null}
+            <View style={{ marginTop: 8, alignSelf: 'stretch' }}>
+              <Button title="Add to Cart" onPress={() => handleAddToCart(item)} />
+            </View>
           </View>
         )}
         ListEmptyComponent={(
