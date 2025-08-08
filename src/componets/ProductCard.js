@@ -1,6 +1,8 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View, Button } from 'react-native';
+import { useCart } from '../context/CartContext';
 
 const ProductCard = ({ product }) => {
+  const { addItem } = useCart();
   return (
     <View style={styles.card}>
       {/* The Image component requires a valid URI, or it can cause errors. */}
@@ -17,6 +19,7 @@ const ProductCard = ({ product }) => {
       <View style={styles.infoContainer}>
         <Text style={styles.name}>{product.name}</Text>
         <Text style={styles.price}>${product.price ? product.price.toFixed(2) : '0.00'}</Text>
+        <Button title="Add to Cart" onPress={() => addItem(product, 1)} />
       </View>
     </View>
   );
@@ -42,6 +45,7 @@ const styles = StyleSheet.create({
   },
   infoContainer: {
     padding: 15,
+    gap: 8,
   },
   name: {
     fontSize: 18,

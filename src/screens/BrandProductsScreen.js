@@ -1,11 +1,11 @@
 // src/screens/BrandProductsScreen.js
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, Image, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, Text, FlatList, Image, StyleSheet, ActivityIndicator, Button } from 'react-native';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase';
 import localData from '../../data.json';
 
-const BrandProductsScreen = ({ route }) => {
+const BrandProductsScreen = ({ route, navigation }) => {
   const { brandId } = route.params;
   const [flavours, setFlavours] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -76,33 +76,39 @@ const BrandProductsScreen = ({ route }) => {
   );
 
   return (
-    <FlatList
-      data={flavours}
-      keyExtractor={item => item.id}
-      contentContainerStyle={styles.container}
-      renderItem={({ item }) => (
-        <View style={styles.card}>
-          {item.image ? (
-            <Image source={{ uri: item.image }} style={styles.image} />
-          ) : (
-            <View style={[styles.image, styles.imagePlaceholder]} />
-          )}
-          <Text style={styles.name}>{item.name || item.id}</Text>
-          {item.puff ? <Text style={styles.puff}>Puffs: {item.puff}</Text> : null}
-        </View>
-      )}
-      ListEmptyComponent={(
-        <View style={styles.center}>
-          <Text>No flavours found for {brandId} ({source || 'unknown'}).</Text>
-        </View>
-      )}
-    />
+    <View style={{ flex: 1 }}>
+      <FlatList
+        data={flavours}
+        keyExtractor={item => item.id}
+        contentContainerStyle={styles.container}
+        renderItem={({ item }) => (
+          <View style={styles.card}>
+            {item.image ? (
+              <Image source={{ uri: item.image }} style={styles.image} />
+            ) : (
+              <View style={[styles.image, styles.imagePlaceholder]} />
+            )}
+            <Text style={styles.name}>{item.name || item.id}</Text>
+            {item.puff ? <Text style={styles.puff}>Puffs: {item.puff}</Text> : null}
+          </View>
+        )}
+        ListEmptyComponent={(
+          <View style={styles.center}>
+            <Text>No flavours found for {brandId} ({source || 'unknown'}).</Text>
+          </View>
+        )}
+      />
+      <View style={styles.footer}>
+        <Button title="Go to Checkout" onPress={() => navigation.navigate('Checkout')} />
+      </View>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     padding: 10,
+    paddingBottom: 80,
   },
   card: {
     backgroundColor: '#fff',
@@ -134,6 +140,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  footer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    padding: 12,
+    backgroundColor: 'white',
+    borderTopWidth: 1,
+    borderTopColor: '#eee',
+  }
 });
 
 export default BrandProductsScreen;
