@@ -5,13 +5,13 @@
         "Mango Ice": {
           "name": "Mango Ice2",
           "puff": "6000",
-          "image": "https://example.com/mango-ice.jpg",
+          "image": "https://source.unsplash.com/600x600/?mango,ice",
           "price": 24.99
         },
         "Watermelon Bubblegum": {
           "name": "Watermelon Bubblegum",
           "puff": "6000",
-          "image": "https://example.com/watermelon-bubblegum.jpg",
+          "image": "https://source.unsplash.com/600x600/?watermelon,bubblegum",
           "price": 24.99
         }
       }
@@ -21,13 +21,13 @@
         "Blueberry Ice": {
           "name": "Blueberry Ice",
           "puff": "5000",
-          "image": "https://example.com/blueberry-ice.jpg",
+          "image": "https://source.unsplash.com/600x600/?blueberry,ice",
           "price": 22.99
         },
         "Strawberry Kiwi": {
           "name": "Strawberry Kiwi",
           "puff": "5000",
-          "image": "https://example.com/strawberry-kiwi.jpg",
+          "image": "https://source.unsplash.com/600x600/?strawberry,kiwi",
           "price": 22.99
         }
       }
@@ -37,13 +37,13 @@
         "Mango Ice": {
           "name": "Mango Ice",
           "puff": "6000",
-          "image": "https://example.com/mango-ice.jpg",
+          "image": "https://source.unsplash.com/600x600/?mango,ice",
           "price": 26.99
         },
         "Watermelon Bubblegum": {
           "name": "Watermelon Bubblegum",
           "puff": "6000",
-          "image": "https://example.com/watermelon-bubblegum.jpg",
+          "image": "https://source.unsplash.com/600x600/?watermelon,bubblegum",
           "price": 26.99
         }
       }
@@ -53,13 +53,13 @@
         "Mango Ice": {
           "name": "Mango Ice",
           "puff": "6000",
-          "image": "https://example.com/mango-ice.jpg",
+          "image": "https://source.unsplash.com/600x600/?mango,ice",
           "price": 26.99
         },
         "Watermelon Bubblegum": {
           "name": "Watermelon Bubblegum",
           "puff": "6000",
-          "image": "https://example.com/watermelon-bubblegum.jpg",
+          "image": "https://source.unsplash.com/600x600/?watermelon,bubblegum",
           "price": 26.99
         }
       }
@@ -72,7 +72,8 @@
       "flavor": "Blueberry",
       "nicotineMg": 12,
       "category": "vape_juice",
-      "price": 19.99
+      "price": 19.99,
+      "imageUrl": "https://source.unsplash.com/600x600/?vape,juice,blueberry"
     },
     "lemon-drop-blueberry-20mg": {
       "name": "Lemon Drop Blueberry 20 mg",
@@ -80,7 +81,8 @@
       "flavor": "Blueberry",
       "nicotineMg": 20,
       "category": "vape_juice",
-      "price": 19.99
+      "price": 19.99,
+      "imageUrl": "https://source.unsplash.com/600x600/?vape,juice,blueberry"
     },
     "lemon-drop-mango-12mg": {
       "name": "Lemon Drop Mango 12 mg",
@@ -88,7 +90,8 @@
       "flavor": "Mango",
       "nicotineMg": 12,
       "category": "vape_juice",
-      "price": 19.99
+      "price": 19.99,
+      "imageUrl": "https://source.unsplash.com/600x600/?vape,juice,mango"
     },
     "lemon-drop-mango-20mg": {
       "name": "Lemon Drop Mango 20 mg",
@@ -96,7 +99,8 @@
       "flavor": "Mango",
       "nicotineMg": 20,
       "category": "vape_juice",
-      "price": 19.99
+      "price": 19.99,
+      "imageUrl": "https://source.unsplash.com/600x600/?vape,juice,mango"
     },
     "beast-mode-blueberry-12mg": {
       "name": "Beast Mode Blueberry 12 mg",
@@ -104,7 +108,8 @@
       "flavor": "Blueberry",
       "nicotineMg": 12,
       "category": "vape_juice",
-      "price": 21.99
+      "price": 21.99,
+      "imageUrl": "https://source.unsplash.com/600x600/?vape,blueberry"
     },
     "beast-mode-blueberry-20mg": {
       "name": "Beast Mode Blueberry 20 mg",
@@ -112,7 +117,8 @@
       "flavor": "Blueberry",
       "nicotineMg": 20,
       "category": "vape_juice",
-      "price": 21.99
+      "price": 21.99,
+      "imageUrl": "https://source.unsplash.com/600x600/?vape,blueberry"
     },
     "beast-mode-mango-12mg": {
       "name": "Beast Mode Mango 12 mg",
@@ -120,7 +126,8 @@
       "flavor": "Mango",
       "nicotineMg": 12,
       "category": "vape_juice",
-      "price": 21.99
+      "price": 21.99,
+      "imageUrl": "https://source.unsplash.com/600x600/?vape,mango"
     },
     "beast-mode-mango-20mg": {
       "name": "Beast Mode Mango 20 mg",
@@ -128,7 +135,8 @@
       "flavor": "Mango",
       "nicotineMg": 20,
       "category": "vape_juice",
-      "price": 21.99
+      "price": 21.99,
+      "imageUrl": "https://source.unsplash.com/600x600/?vape,mango"
     },
 
     "z-pods-mango": {
@@ -136,21 +144,24 @@
       "brand": "Z Pods",
       "flavor": "Mango",
       "category": "z_pods",
-      "price": 14.99
+      "price": 14.99,
+      "imageUrl": "https://source.unsplash.com/600x600/?vape,pod,mango"
     },
     "z-pods-watermelon": {
       "name": "Z Pods Watermelon",
       "brand": "Z Pods",
       "flavor": "Watermelon",
       "category": "z_pods",
-      "price": 14.99
+      "price": 14.99,
+      "imageUrl": "https://source.unsplash.com/600x600/?vape,pod,watermelon"
     },
     "z-pods-kiwi": {
       "name": "Z Pods Kiwi",
       "brand": "Z Pods",
       "flavor": "Kiwi",
       "category": "z_pods",
-      "price": 14.99
+      "price": 14.99,
+      "imageUrl": "https://source.unsplash.com/600x600/?vape,pod,kiwi"
     },
 
     "hybrid-pods-mango": {
@@ -158,21 +169,24 @@
       "brand": "Hybrid Pods",
       "flavor": "Mango",
       "category": "hybrid_pods",
-      "price": 15.99
+      "price": 15.99,
+      "imageUrl": "https://source.unsplash.com/600x600/?vape,pod,mango"
     },
     "hybrid-pods-watermelon": {
       "name": "Hybrid Pods Watermelon",
       "brand": "Hybrid Pods",
       "flavor": "Watermelon",
       "category": "hybrid_pods",
-      "price": 15.99
+      "price": 15.99,
+      "imageUrl": "https://source.unsplash.com/600x600/?vape,pod,watermelon"
     },
     "hybrid-pods-kiwi": {
       "name": "Hybrid Pods Kiwi",
       "brand": "Hybrid Pods",
       "flavor": "Kiwi",
       "category": "hybrid_pods",
-      "price": 15.99
+      "price": 15.99,
+      "imageUrl": "https://source.unsplash.com/600x600/?vape,pod,kiwi"
     },
 
     "stlth-mango": {
@@ -180,21 +194,24 @@
       "brand": "STLTH",
       "flavor": "Mango",
       "category": "stlth",
-      "price": 16.99
+      "price": 16.99,
+      "imageUrl": "https://source.unsplash.com/600x600/?vape,pod,mango"
     },
     "stlth-watermelon": {
       "name": "STLTH Watermelon",
       "brand": "STLTH",
       "flavor": "Watermelon",
       "category": "stlth",
-      "price": 16.99
+      "price": 16.99,
+      "imageUrl": "https://source.unsplash.com/600x600/?vape,pod,watermelon"
     },
     "stlth-kiwi": {
       "name": "STLTH Kiwi",
       "brand": "STLTH",
       "flavor": "Kiwi",
       "category": "stlth",
-      "price": 16.99
+      "price": 16.99,
+      "imageUrl": "https://source.unsplash.com/600x600/?vape,pod,kiwi"
     }
   }
 }
