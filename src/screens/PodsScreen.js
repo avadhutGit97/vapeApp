@@ -1,56 +1,60 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
-import ProductListScreen from './ProductListScreen';
+import React from 'react';
+import { View, StyleSheet, TouchableOpacity, Text, Image, FlatList } from 'react-native';
 
-const CATEGORIES = [
-  { key: 'z_pods', label: 'Z Pods' },
-  { key: 'hybrid_pods', label: 'Hybrid Pods' },
-  { key: 'stlth', label: 'STLTH' },
+const ENTRIES = [
+  { key: 'z_pods', label: 'Z Pods', image: 'https://example.com/z-pods.jpg' },
+  { key: 'hybrid_pods', label: 'Hybrid Pods', image: 'https://example.com/hybrid-pods.jpg' },
+  { key: 'stlth', label: 'STLTH', image: 'https://example.com/stlth.jpg' },
 ];
 
-const PodsScreen = (props) => {
-  const [active, setActive] = useState(CATEGORIES[0].key);
+const PodsScreen = ({ navigation }) => {
+  const handlePress = (category) => {
+    navigation.navigate('PodsCategory', { category });
+  };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.tabs}>
-        {CATEGORIES.map(cat => (
-          <TouchableOpacity key={cat.key} style={[styles.tab, active === cat.key && styles.tabActive]} onPress={() => setActive(cat.key)}>
-            <Text style={[styles.tabText, active === cat.key && styles.tabTextActive]}>{cat.label}</Text>
-          </TouchableOpacity>
-        ))}
-      </View>
-      <View style={styles.content}>
-        <ProductListScreen {...props} category={active} />
-      </View>
-    </View>
+    <FlatList
+      style={{ flex: 1 }}
+      data={ENTRIES}
+      keyExtractor={(item) => item.key}
+      contentContainerStyle={styles.container}
+      renderItem={({ item }) => (
+        <TouchableOpacity style={styles.card} onPress={() => handlePress(item.key)}>
+          {item.image ? (
+            <Image source={{ uri: item.image }} style={styles.image} />
+          ) : (
+            <View style={[styles.image, { backgroundColor: '#eee' }]} />
+          )}
+          <Text style={styles.title}>{item.label}</Text>
+        </TouchableOpacity>
+      )}
+    />
   );
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
-  tabs: {
-    flexDirection: 'row',
-    backgroundColor: 'white',
-    borderBottomWidth: 1,
-    borderBottomColor: '#eee',
+  container: {
+    padding: 15,
   },
-  tab: {
-    paddingVertical: 10,
-    paddingHorizontal: 14,
+  card: {
+    backgroundColor: '#fff',
+    padding: 12,
+    marginVertical: 10,
+    borderRadius: 10,
+    elevation: 2,
+    alignItems: 'center',
   },
-  tabActive: {
-    borderBottomWidth: 2,
-    borderBottomColor: '#3498db',
+  image: {
+    width: '100%',
+    height: 160,
+    borderRadius: 8,
+    backgroundColor: '#eee',
   },
-  tabText: {
-    color: '#888',
-    fontWeight: '600',
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: 8,
   },
-  tabTextActive: {
-    color: '#3498db',
-  },
-  content: { flex: 1 },
 });
 
 export default PodsScreen;

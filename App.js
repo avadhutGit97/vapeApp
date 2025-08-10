@@ -15,6 +15,7 @@ import PodsScreen from './src/screens/PodsScreen';
 import BrandProductsScreen from './src/screens/BrandProductsScreen'
 import { CartProvider, useCart } from './src/context/CartContext';
 import { View, Text } from 'react-native';
+import PodsCategoryScreen from './src/screens/PodsCategoryScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -96,6 +97,11 @@ export default function App() {
             name="BrandProducts"
             component={BrandProductsScreen}
             options={{ title: 'Brand Products', headerBackVisible: true }}
+          />
+          <Stack.Screen
+            name="PodsCategory"
+            component={PodsCategoryScreen}
+            options={{ title: 'Pods' }}
           />
           <Stack.Screen
             name="Checkout"
