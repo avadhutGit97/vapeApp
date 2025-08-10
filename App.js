@@ -98,11 +98,25 @@ function MainAppTabs({ navigation }) {
       })}
     >
       {/* Category tabs */}
-      <Tab.Screen name="Disposables" component={DisposablesStackScreen} options={{ unmountOnBlur: true }} />
+      <Tab.Screen
+        name="Disposables"
+        component={DisposablesStackScreen}
+        options={{ unmountOnBlur: true }}
+        listeners={({ navigation: tabNav }) => ({
+          focus: () => tabNav.navigate('Disposables', { screen: 'DisposablesHome' }),
+        })}
+      />
       <Tab.Screen name="Vape Juice" options={{ unmountOnBlur: true }}>
         {props => <ProductListScreen {...props} category="vape_juice" />}
       </Tab.Screen>
-      <Tab.Screen name="Pods" component={PodsStackScreen} options={{ unmountOnBlur: true }} />
+      <Tab.Screen
+        name="Pods"
+        component={PodsStackScreen}
+        options={{ unmountOnBlur: true }}
+        listeners={({ navigation: tabNav }) => ({
+          focus: () => tabNav.navigate('Pods', { screen: 'PodsHome' }),
+        })}
+      />
       <Tab.Screen name="Cart" component={() => null} listeners={{
         tabPress: e => {
           e.preventDefault();
