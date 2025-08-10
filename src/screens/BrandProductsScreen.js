@@ -75,7 +75,7 @@ const BrandProductsScreen = ({ route, navigation }) => {
     const product = {
       id: `${brandId}:${flavour.id}`,
       name: `${brandId} - ${flavour.name || flavour.id}`,
-      price: 0,
+      price: typeof flavour.price === 'number' ? flavour.price : 0,
       imageUrl: flavour.image || null,
       category: 'disposables',
     };
@@ -102,6 +102,7 @@ const BrandProductsScreen = ({ route, navigation }) => {
           )}
           <Text style={styles.name}>{item.name || item.id}</Text>
           {item.puff ? <Text style={styles.puff}>Puffs: {item.puff}</Text> : null}
+          {typeof item.price === 'number' ? <Text style={styles.price}>${item.price.toFixed(2)}</Text> : null}
           <View style={{ marginTop: 8, alignSelf: 'stretch' }}>
             <Button title="Add to Cart" onPress={() => handleAddToCart(item)} />
           </View>
@@ -144,6 +145,11 @@ const styles = StyleSheet.create({
   puff: {
     fontSize: 14,
     color: '#555',
+  },
+  price: {
+    fontSize: 16,
+    color: '#222',
+    marginTop: 4,
   },
   center: {
     flex: 1,

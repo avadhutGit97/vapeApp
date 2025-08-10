@@ -5,12 +5,14 @@
         "Mango Ice": {
           "name": "Mango Ice2",
           "puff": "6000",
-          "image": "https://example.com/mango-ice.jpg"
+          "image": "https://example.com/mango-ice.jpg",
+          "price": 24.99
         },
         "Watermelon Bubblegum": {
           "name": "Watermelon Bubblegum",
           "puff": "6000",
-          "image": "https://example.com/watermelon-bubblegum.jpg"
+          "image": "https://example.com/watermelon-bubblegum.jpg",
+          "price": 24.99
         }
       }
     },
@@ -19,12 +21,14 @@
         "Blueberry Ice": {
           "name": "Blueberry Ice",
           "puff": "5000",
-          "image": "https://example.com/blueberry-ice.jpg"
+          "image": "https://example.com/blueberry-ice.jpg",
+          "price": 22.99
         },
         "Strawberry Kiwi": {
           "name": "Strawberry Kiwi",
           "puff": "5000",
-          "image": "https://example.com/strawberry-kiwi.jpg"
+          "image": "https://example.com/strawberry-kiwi.jpg",
+          "price": 22.99
         }
       }
     },
@@ -33,12 +37,14 @@
         "Mango Ice": {
           "name": "Mango Ice",
           "puff": "6000",
-          "image": "https://example.com/mango-ice.jpg"
+          "image": "https://example.com/mango-ice.jpg",
+          "price": 26.99
         },
         "Watermelon Bubblegum": {
           "name": "Watermelon Bubblegum",
           "puff": "6000",
-          "image": "https://example.com/watermelon-bubblegum.jpg"
+          "image": "https://example.com/watermelon-bubblegum.jpg",
+          "price": 26.99
         }
       }
     },
@@ -47,12 +53,14 @@
         "Mango Ice": {
           "name": "Mango Ice",
           "puff": "6000",
-          "image": "https://example.com/mango-ice.jpg"
+          "image": "https://example.com/mango-ice.jpg",
+          "price": 26.99
         },
         "Watermelon Bubblegum": {
           "name": "Watermelon Bubblegum",
           "puff": "6000",
-          "image": "https://example.com/watermelon-bubblegum.jpg"
+          "image": "https://example.com/watermelon-bubblegum.jpg",
+          "price": 26.99
         }
       }
     }
