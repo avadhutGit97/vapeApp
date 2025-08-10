@@ -21,6 +21,7 @@ const RootStack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const DisposablesStack = createNativeStackNavigator();
 const PodsStack = createNativeStackNavigator();
+const VapeJuiceStack = createNativeStackNavigator();
 
 function CartTabIcon({ color, size }) {
   const { items } = useCart();
@@ -80,6 +81,19 @@ function PodsStackScreen() {
   );
 }
 
+function VapeJuiceStackScreen() {
+  return (
+    <VapeJuiceStack.Navigator>
+      <VapeJuiceStack.Screen
+        name="VapeJuiceHome"
+        options={{ headerShown: false }}
+      >
+        {props => <ProductListScreen {...props} category="vape_juice" />}
+      </VapeJuiceStack.Screen>
+    </VapeJuiceStack.Navigator>
+  );
+}
+
 function MainAppTabs({ navigation }) {
   return (
     <Tab.Navigator
@@ -106,9 +120,14 @@ function MainAppTabs({ navigation }) {
           focus: () => tabNav.navigate('Disposables', { screen: 'DisposablesHome' }),
         })}
       />
-      <Tab.Screen name="Vape Juice" options={{ unmountOnBlur: true }}>
-        {props => <ProductListScreen {...props} category="vape_juice" />}
-      </Tab.Screen>
+      <Tab.Screen
+        name="Vape Juice"
+        component={VapeJuiceStackScreen}
+        options={{ unmountOnBlur: true }}
+        listeners={({ navigation: tabNav }) => ({
+          focus: () => tabNav.navigate('Vape Juice', { screen: 'VapeJuiceHome' }),
+        })}
+      />
       <Tab.Screen
         name="Pods"
         component={PodsStackScreen}
