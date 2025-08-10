@@ -12,6 +12,14 @@ const ENTRY_BRANDS = [
     id: 'Geek Bar 5000',
     image: 'https://example.com/strawberry-kiwi.jpg',
   },
+  {
+    id: 'Level X',
+    image: 'https://example.com/level-x.jpg',
+  },
+  {
+    id: 'Beast Mode Max',
+    image: 'https://example.com/beast-mode-max.jpg',
+  },
 ];
 
 const DisposablesScreen = ({ navigation }) => {

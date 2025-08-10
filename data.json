@@ -27,6 +27,34 @@
           "image": "https://example.com/strawberry-kiwi.jpg"
         }
       }
+    },
+    "Level X": {
+      "flavours": {
+        "Mango Ice": {
+          "name": "Mango Ice",
+          "puff": "6000",
+          "image": "https://example.com/mango-ice.jpg"
+        },
+        "Watermelon Bubblegum": {
+          "name": "Watermelon Bubblegum",
+          "puff": "6000",
+          "image": "https://example.com/watermelon-bubblegum.jpg"
+        }
+      }
+    },
+    "Beast Mode Max": {
+      "flavours": {
+        "Mango Ice": {
+          "name": "Mango Ice",
+          "puff": "6000",
+          "image": "https://example.com/mango-ice.jpg"
+        },
+        "Watermelon Bubblegum": {
+          "name": "Watermelon Bubblegum",
+          "puff": "6000",
+          "image": "https://example.com/watermelon-bubblegum.jpg"
+        }
+      }
     }
   },
   "products": {
