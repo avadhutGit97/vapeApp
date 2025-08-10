@@ -89,42 +89,36 @@ const BrandProductsScreen = ({ route, navigation }) => {
   );
 
   return (
-    <View style={{ flex: 1 }}>
-      <FlatList
-        data={flavours}
-        keyExtractor={item => item.id}
-        contentContainerStyle={styles.container}
-        renderItem={({ item }) => (
-          <View style={styles.card}>
-            {item.image ? (
-              <Image source={{ uri: item.image }} style={styles.image} />
-            ) : (
-              <View style={[styles.image, styles.imagePlaceholder]} />
-            )}
-            <Text style={styles.name}>{item.name || item.id}</Text>
-            {item.puff ? <Text style={styles.puff}>Puffs: {item.puff}</Text> : null}
-            <View style={{ marginTop: 8, alignSelf: 'stretch' }}>
-              <Button title="Add to Cart" onPress={() => handleAddToCart(item)} />
-            </View>
+    <FlatList
+      data={flavours}
+      keyExtractor={item => item.id}
+      contentContainerStyle={styles.container}
+      renderItem={({ item }) => (
+        <View style={styles.card}>
+          {item.image ? (
+            <Image source={{ uri: item.image }} style={styles.image} />
+          ) : (
+            <View style={[styles.image, styles.imagePlaceholder]} />
+          )}
+          <Text style={styles.name}>{item.name || item.id}</Text>
+          {item.puff ? <Text style={styles.puff}>Puffs: {item.puff}</Text> : null}
+          <View style={{ marginTop: 8, alignSelf: 'stretch' }}>
+            <Button title="Add to Cart" onPress={() => handleAddToCart(item)} />
           </View>
-        )}
-        ListEmptyComponent={(
-          <View style={styles.center}>
-            <Text>No flavours found for {brandId} ({source || 'unknown'}).</Text>
-          </View>
-        )}
-      />
-      <View style={styles.footer}>
-        <Button title="Go to Checkout" onPress={() => navigation.navigate('Checkout')} />
-      </View>
-    </View>
+        </View>
+      )}
+      ListEmptyComponent={(
+        <View style={styles.center}>
+          <Text>No flavours found for {brandId} ({source || 'unknown'}).</Text>
+        </View>
+      )}
+    />
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-    paddingBottom: 80,
   },
   card: {
     backgroundColor: '#fff',
@@ -156,16 +150,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  footer: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 0,
-    padding: 12,
-    backgroundColor: 'white',
-    borderTopWidth: 1,
-    borderTopColor: '#eee',
-  }
 });
 
 export default BrandProductsScreen;

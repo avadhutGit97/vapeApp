@@ -1,28 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet, ActivityIndicator, Button } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, ActivityIndicator, Image } from 'react-native';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase';
 
+const ENTRY_BRANDS = [
+  {
+    id: 'Elf Bar 6000',
+    image: 'https://example.com/mango-ice.jpg',
+  },
+  {
+    id: 'Geek Bar 5000',
+    image: 'https://example.com/strawberry-kiwi.jpg',
+  },
+];
+
 const DisposablesScreen = ({ navigation }) => {
-  const [brands, setBrands] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
-  const fetchBrands = async () => {
-    try {
-      const snapshot = await getDocs(collection(db, 'disposables'));
-      console.log('Snapshot size:', snapshot.size);
-      const brandList = snapshot.docs.map(doc => ({ id: doc.id }));
-      console.log('Brands:', brandList);
-      setBrands(brandList);
-    } catch (err) {
-      console.error('Error fetching brands: ', err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  // Keep code handy if later we want to validate existence in Firestore
   useEffect(() => {
-    fetchBrands();
+    const check = async () => {
+      try {
+        setLoading(true);
+        await getDocs(collection(db, 'disposables'));
+      } catch (e) {
+      } finally {
+        setLoading(false);
+      }
+    };
+    check();
   }, []);
 
   const handleBrandPress = (brandId) => {
@@ -38,55 +44,55 @@ const DisposablesScreen = ({ navigation }) => {
   }
 
   return (
-    <View style={{ flex: 1 }}>
-      <FlatList
-        data={brands}
-        keyExtractor={item => item.id}
-        contentContainerStyle={styles.container}
-        renderItem={({ item }) => (
-          <TouchableOpacity style={styles.card} onPress={() => handleBrandPress(item.id)}>
-            <Text style={styles.brandText}>{item.id}</Text>
-          </TouchableOpacity>
-        )}
-      />
-      <View style={styles.footer}>
-        <Button title="Go to Checkout" onPress={() => navigation.navigate('Checkout')} />
-      </View>
-    </View>
+    <FlatList
+      data={ENTRY_BRANDS}
+      keyExtractor={item => item.id}
+      contentContainerStyle={styles.container}
+      renderItem={({ item }) => (
+        <TouchableOpacity style={styles.card} onPress={() => handleBrandPress(item.id)}>
+          {item.image ? (
+            <Image source={{ uri: item.image }} style={styles.image} />
+          ) : (
+            <View style={[styles.image, styles.placeholder]} />
+          )}
+          <Text style={styles.brandText}>{item.id}</Text>
+        </TouchableOpacity>
+      )}
+    />
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     padding: 15,
-    paddingBottom: 80,
   },
   card: {
     backgroundColor: '#fff',
-    padding: 20,
+    padding: 12,
     marginVertical: 10,
     borderRadius: 10,
     elevation: 2,
+    alignItems: 'center',
   },
   brandText: {
     fontSize: 18,
     fontWeight: 'bold',
+    marginTop: 8,
   },
   center: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  footer: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 0,
-    padding: 12,
-    backgroundColor: 'white',
-    borderTopWidth: 1,
-    borderTopColor: '#eee',
-  }
+  image: {
+    width: '100%',
+    height: 160,
+    borderRadius: 8,
+    backgroundColor: '#eee',
+  },
+  placeholder: {
+    backgroundColor: '#eee',
+  },
 });
 
 export default DisposablesScreen;
