@@ -17,8 +17,10 @@ import { CartProvider, useCart } from './src/context/CartContext';
 import { View, Text } from 'react-native';
 import PodsCategoryScreen from './src/screens/PodsCategoryScreen';
 
-const Stack = createNativeStackNavigator();
+const RootStack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+const DisposablesStack = createNativeStackNavigator();
+const PodsStack = createNativeStackNavigator();
 
 function CartTabIcon({ color, size }) {
   const { items } = useCart();
@@ -44,6 +46,40 @@ function CartTabIcon({ color, size }) {
   );
 }
 
+function DisposablesStackScreen() {
+  return (
+    <DisposablesStack.Navigator>
+      <DisposablesStack.Screen
+        name="DisposablesHome"
+        component={DisposablesScreen}
+        options={{ headerShown: false }}
+      />
+      <DisposablesStack.Screen
+        name="BrandProducts"
+        component={BrandProductsScreen}
+        options={{ title: 'Brand Products' }}
+      />
+    </DisposablesStack.Navigator>
+  );
+}
+
+function PodsStackScreen() {
+  return (
+    <PodsStack.Navigator>
+      <PodsStack.Screen
+        name="PodsHome"
+        component={PodsScreen}
+        options={{ headerShown: false }}
+      />
+      <PodsStack.Screen
+        name="PodsCategory"
+        component={PodsCategoryScreen}
+        options={{ title: 'Pods' }}
+      />
+    </PodsStack.Navigator>
+  );
+}
+
 function MainAppTabs({ navigation }) {
   return (
     <Tab.Navigator
@@ -62,11 +98,11 @@ function MainAppTabs({ navigation }) {
       })}
     >
       {/* Category tabs */}
-      <Tab.Screen name="Disposables" component={DisposablesScreen} />
+      <Tab.Screen name="Disposables" component={DisposablesStackScreen} />
       <Tab.Screen name="Vape Juice">
         {props => <ProductListScreen {...props} category="vape_juice" />}
       </Tab.Screen>
-      <Tab.Screen name="Pods" component={PodsScreen} />
+      <Tab.Screen name="Pods" component={PodsStackScreen} />
       <Tab.Screen name="Cart" component={() => null} listeners={{
         tabPress: e => {
           e.preventDefault();
@@ -82,33 +118,23 @@ export default function App() {
     <CartProvider>
       <NavigationContainer>
         <StatusBar style="auto" />
-        <Stack.Navigator initialRouteName="AgeVerification">
-          <Stack.Screen
+        <RootStack.Navigator initialRouteName="AgeVerification">
+          <RootStack.Screen
             name="AgeVerification"
             component={AgeVerificationScreen}
             options={{ title: 'Age Verification', headerBackVisible: false }}
           />
-          <Stack.Screen
+          <RootStack.Screen
             name="MainApp"
             component={MainAppTabs}
             options={{ headerShown: false }}
           />
-           <Stack.Screen
-            name="BrandProducts"
-            component={BrandProductsScreen}
-            options={{ title: 'Brand Products', headerBackVisible: true }}
-          />
-          <Stack.Screen
-            name="PodsCategory"
-            component={PodsCategoryScreen}
-            options={{ title: 'Pods' }}
-          />
-          <Stack.Screen
+          <RootStack.Screen
             name="Checkout"
             component={CheckoutScreen}
             options={{ title: 'Checkout' }}
           />
-        </Stack.Navigator>
+        </RootStack.Navigator>
       </NavigationContainer>
     </CartProvider>
   );
