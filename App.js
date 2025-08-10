@@ -98,11 +98,11 @@ function MainAppTabs({ navigation }) {
       })}
     >
       {/* Category tabs */}
-      <Tab.Screen name="Disposables" component={DisposablesStackScreen} />
-      <Tab.Screen name="Vape Juice">
+      <Tab.Screen name="Disposables" component={DisposablesStackScreen} options={{ unmountOnBlur: true }} />
+      <Tab.Screen name="Vape Juice" options={{ unmountOnBlur: true }}>
         {props => <ProductListScreen {...props} category="vape_juice" />}
       </Tab.Screen>
-      <Tab.Screen name="Pods" component={PodsStackScreen} />
+      <Tab.Screen name="Pods" component={PodsStackScreen} options={{ unmountOnBlur: true }} />
       <Tab.Screen name="Cart" component={() => null} listeners={{
         tabPress: e => {
           e.preventDefault();
